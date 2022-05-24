@@ -8,4 +8,19 @@ userManager.add(user);
 userManager.add(user1);
 userManager.add(user3);
 userManager.showList();
+function updateButtonDelete() {
+    var deleteUserButtons = document.getElementsByClassName('delete-user');
+    var _loop_1 = function (i) {
+        deleteUserButtons[i].addEventListener('click', function () {
+            var index = deleteUserButtons[i].getAttribute('value');
+            userManager.deleteUser(+index);
+            // goi lai ham uplodate de cap nhat deleteUserButtons
+            updateButtonDelete();
+        });
+    };
+    for (var i = 0; i < deleteUserButtons.length; i++) {
+        _loop_1(i);
+    }
+}
+updateButtonDelete();
 //# sourceMappingURL=Main.js.map
